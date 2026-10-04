@@ -1,0 +1,17 @@
+{
+  "name": "Windows 10 Lite LTSC (dockur)",
+  "service": "windows",
+  "dockerComposeFile": "docker-compose.yml",
+  "forwardPorts": [8006],
+  "portsAttributes": {
+    "8006": {
+      "label": "Windows 10 Lite web desktop",
+      "onAutoForward": "notify",
+      "protocol": "http"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  },
+  "shutdownAction": "stopCompose"
+}

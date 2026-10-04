@@ -1,0 +1,34 @@
+services:
+  windows:
+    image: ghcr.io/dockur/windows:latest
+    container_name: windows10-lite
+    environment:
+      VERSION: "10l"
+      RAM_SIZE: "3G"
+      CPU_CORES: "2"
+      CPU_MODEL: "qemu64"
+      DISK_SIZE: "24G"
+      DISK_MINIMUM: "1G"
+      DISK_FMT: "qcow2"
+      KVM: "N"
+      RAM_CHECK: "N"
+      DISPLAY: "web"
+      WEB_PORT: "8006"
+      WIDTH: "1024"
+      HEIGHT: "600"
+      LOSSY: "Y"
+      AUDIO: "N"
+      MIDO: "Y"
+      ESD: "Y"
+      REMOVE: "Y"
+      USERNAME: "WindowsUser"
+      PASSWORD: "ChangeThisPassword"
+      AUTOLOGIN: "Y"
+      SAMBA: "N"
+      SHORTCUT: "N"
+    ports:
+      - "8006:8006"
+    volumes:
+      - ../windows:/storage
+    restart: on-failure
+    stop_grace_period: 2m
