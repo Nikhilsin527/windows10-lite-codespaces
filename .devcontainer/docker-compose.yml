@@ -1,13 +1,13 @@
 services:
   windows:
     image: ghcr.io/dockur/windows:latest
-    container_name: windows10-lite
+    container_name: tiny10-lite
     environment:
-      VERSION: "10l"
+      VERSION: "tiny10"
       RAM_SIZE: "3G"
       CPU_CORES: "2"
       CPU_MODEL: "qemu64"
-      DISK_SIZE: "24G"
+      DISK_SIZE: "20G"
       DISK_MINIMUM: "1G"
       DISK_FMT: "qcow2"
       KVM: "N"
@@ -21,7 +21,7 @@ services:
       MIDO: "Y"
       ESD: "Y"
       REMOVE: "Y"
-      USERNAME: "WindowsUser"
+      USERNAME: "TinyUser"
       PASSWORD: "ChangeThisPassword"
       AUTOLOGIN: "Y"
       SAMBA: "N"

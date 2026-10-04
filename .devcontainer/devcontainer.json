@@ -1,11 +1,11 @@
 {
-  "name": "Windows 10 Lite LTSC (dockur)",
+  "name": "Tiny10 Lite Codespaces (dockur)",
   "service": "windows",
   "dockerComposeFile": "docker-compose.yml",
   "forwardPorts": [8006],
   "portsAttributes": {
     "8006": {
-      "label": "Windows 10 Lite web desktop",
+      "label": "Tiny10 web desktop",
       "onAutoForward": "notify",
       "protocol": "http"
     }

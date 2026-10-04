@@ -1,48 +1,48 @@
-# Windows 10 Lite Codespaces — LTSC profile
+# Tiny10 Lite Codespaces — dockur/windows
 
-A lighter Windows 10 Codespaces configuration based on [dockur/windows](https://github.com/dockur/windows).
+यह public repository [dockur/windows](https://github.com/dockur/windows) के supported `VERSION: "tiny10"` profile पर आधारित है।
 
-## What is lighter here?
+## क्या सेट किया गया है
 
-This profile uses **Windows 10 LTSC** (`VERSION: "10l"`) instead of regular Windows 10 and disables features that add load:
-
+- Tiny10 automatic install: `VERSION: "tiny10"`
 - 3 GB guest RAM
 - 2 virtual CPU cores
-- 24 GB qcow2 disk
-- 1024×600 display
+- 20 GB qcow2 disk
+- 1024×600 browser display
 - Lossy web-VNC compression enabled
 - Audio disabled
 - Samba/shared-folder integration disabled
-- Hardware KVM disabled for Codespaces compatibility
+- KVM disabled ताकि GitHub Codespaces में start होने की संभावना रहे
+- Web desktop port: **8006**
 
-The container still downloads and installs the Windows image automatically from the upstream dockur/windows workflow. No Windows image is stored in this repository.
+Tiny10 image इस repository में store नहीं है; upstream container installation के दौरान उसे download करता है।
 
-## Start
+## Start करने का तरीका
 
-1. Open [Create this Codespace](https://codespaces.new/Nikhilsin527/windows10-lite-codespaces).
-2. Choose a **4-core machine** if GitHub offers the choice.
-3. Create the Codespace and wait for the first installation to finish.
-4. Open forwarded port **8006** from the Ports tab.
+1. [Create Tiny10 Codespace](https://codespaces.new/Nikhilsin527/windows10-lite-codespaces) खोलें।
+2. यदि विकल्प मिले तो **4-core machine** चुनें।
+3. Codespace create करें और पहली installation पूरी होने दें।
+4. **Ports → 8006 → Open in Browser** पर क्लिक करें।
 
-First installation may take a long time. Keep the Codespace running during the download and installation.
+पहली installation में download और VM setup के कारण काफी समय लग सकता है। Installation के दौरान Codespace बंद न करें।
 
 ## Login
 
 ```text
-Username: WindowsUser
+Username: TinyUser
 Password: ChangeThisPassword
 ```
 
-Change the password immediately after first login. You can edit `PASSWORD` in `.devcontainer/docker-compose.yml` before creating the Codespace.
+पहली बार login के बाद password तुरंत बदल दें। Password बदलने के लिए Codespace बनाने से पहले `.devcontainer/docker-compose.yml` में `PASSWORD` value edit करें।
 
-## Important performance truth
+## जरूरी performance limitation
 
-GitHub Codespaces normally does not expose `/dev/kvm`. Therefore this repository uses QEMU software emulation (`KVM: "N"`). It is lighter than the previous profile, but **smooth Windows performance cannot be guaranteed** on Codespaces. If it still hangs, the limitation is the missing hardware virtualization, not only RAM settings.
+GitHub Codespaces आम तौर पर `/dev/kvm` उपलब्ध नहीं कराता। इसलिए यह configuration `KVM: "N"` के साथ QEMU software emulation चलाती है। यह previous regular Windows 10 profile से हल्का होना चाहिए, लेकिन **Codespaces पर smooth performance की guarantee नहीं है**। अगर Tiny10 भी hang करे, तो मुख्य कारण hardware virtualization की कमी है।
 
-For genuinely smooth Windows 10, use a Linux VM/VPS with nested virtualization and `/dev/kvm`, then use the normal dockur/windows configuration with KVM enabled.
+वास्तव में smooth Tiny10 के लिए KVM-enabled Linux VM/VPS चाहिए।
 
-Windows activation/licensing is not included. Use a valid license where required.
+Windows activation/licensing इसमें शामिल नहीं है; valid license का उपयोग करें।
 
 ## Quota warning
 
-The VM consumes Codespaces storage and compute quota. Stop or delete the Codespace after use.
+Tiny10 VM Codespaces storage और compute quota इस्तेमाल करेगा। काम पूरा होने पर Codespace stop या delete कर दें।
